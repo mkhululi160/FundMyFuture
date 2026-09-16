@@ -1,20 +1,30 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+
+import HomeScreen from './src/screens/HomeScreen';
+import MatcherScreen from './src/screens/MatcherScreen';
+import DirectoryScreen from './src/screens/DirectoryScreen';
+import VaultScreen from './src/screens/VaultScreen';
+import JobsScreen from './src/screens/JobsScreen';
+import JobDetailScreen from './src/screens/JobDetailScreen';
+
+const Stack = createStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator
+        initialRouteName="Home"
+        screenOptions={{ headerShown: false }}
+      >
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Matcher" component={MatcherScreen} />
+        <Stack.Screen name="Directory" component={DirectoryScreen} />
+        <Stack.Screen name="Vault" component={VaultScreen} />
+        <Stack.Screen name="Jobs" component={JobsScreen} />
+        <Stack.Screen name="JobDetail" component={JobDetailScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
